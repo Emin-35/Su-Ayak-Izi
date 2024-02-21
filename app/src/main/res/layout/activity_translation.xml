@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#0E5A97"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_background"
+        android:padding="10dp"
+        android:text="@string/su_ayak_izi"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="2"
+        android:layout_gravity="center"
+        >
+
+        <!-- Image 1 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/shower"
+            android:layout_margin="5dp"
+            />
+
+        <!-- Image 2 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/hand_washer"
+            android:layout_margin="5dp"/>
+
+        <!-- Image 3 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/dish_washer"
+            android:layout_margin="5dp"/>
+
+        <!-- Image 4 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/washing_machine"
+            android:layout_margin="5dp"/>
+
+        <!-- Image 5 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/water_usage"
+            android:layout_margin="5dp"/>
+
+        <!-- Image 6 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/statistics"
+            android:layout_margin="5dp"/>
+    </GridLayout>
+
+</LinearLayout>
