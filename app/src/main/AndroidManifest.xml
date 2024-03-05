@@ -17,6 +17,10 @@
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.SemesterProject" />
+        <activity android:name=".RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.SemesterProject" />
         <activity
             android:name=".TranslationActivity"
             android:exported="false" />

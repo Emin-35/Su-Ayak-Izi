@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.semesterproject.databinding.LoginTabBinding;
-
 public class LoginActivity extends AppCompatActivity {
     private EditText emailTextInput,passwordTextInput;
     private Button forgotPasswordButton,loginButton,registerButton;
@@ -37,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = emailTextInput.getText().toString();
-                String password = emailTextInput.getText().toString();
+                String password = passwordTextInput.getText().toString();
 
                 if(!email.isEmpty() && !password.isEmpty()) {
                     boolean status = dbHelper.checkLoginStatus(email,password);
@@ -49,12 +47,21 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(LoginActivity.this, "Lütfen E-posta ve Şifre Giriniz", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Girilen Bilgiler Hatalı veya Yanlış", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Girilen Bilgiler Hatalı veya Yanlış", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Lütfen E-posta ve Şifre Giriniz", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        //If user clicks on the register button, move him/her to register page
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
