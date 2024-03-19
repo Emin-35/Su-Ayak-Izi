@@ -113,16 +113,18 @@
         android:layout_gravity="center"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerButtonRegister"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:text="@string/kayit_ol"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:background="@drawable/gradient_login_button"
         />
+
     </LinearLayout>
 </ScrollView>
 
