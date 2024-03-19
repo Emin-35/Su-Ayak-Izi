@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    // Interface for updating the database simultaneously
+    // Interface for inserting and updating the database simultaneously
     public interface InsertCallback {
         void onInsertComplete();
+    }
+
+    public interface UpdateCallback {
+        void onUpdateComplete();
     }
     private static final String DATABASE_NAME = "LoginRegisterInformationDB";
     private static final int DATABASE_VERSION = 2;
@@ -30,6 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_NAME = "user_name";
     public static final String COLUMN_LASTNAME = "user_lastname";
+    public static final String COLUMN_GENDER = "user_gender";
 
     // Create TABLE_LOGIN
     private static final String CREATE_TABLE_LOGIN =
@@ -38,7 +43,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_EMAIL + " TEXT," +
                     COLUMN_PASSWORD + " TEXT," +
                     COLUMN_NAME + " TEXT," +
-                    COLUMN_LASTNAME + " TEXT)";
+                    COLUMN_LASTNAME + " TEXT," +
+                    COLUMN_GENDER + " TEXT )";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -114,6 +120,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
         try {
             // Insert the values into the database
+            db.insertOrThrow(TABLE_LOGIN, null, values);
+            // Notify the callback that the insert operation is complete
+            callback.onInsertComplete();
+        }
+        catch (SQLException e) {
+            // Handle the exception appropriately (e.g., show a toast message)
+            Toast.makeText(context, "Error inserting data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        finally {
+            db.close();
+        }
+    }
+
+    public void updateUser(String gender, Context context, InsertCallback callback) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_GENDER, gender);
+
+        try {
+            // Insert the gender value into the database
             db.insertOrThrow(TABLE_LOGIN, null, values);
             // Notify the callback that the insert operation is complete
             callback.onInsertComplete();

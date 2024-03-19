@@ -7,12 +7,17 @@
     <string name="eposta_adresi">E-posta Adresi</string>
     <string name="isim">İsim</string>
     <string name="soy_isim">Soy İsim</string>
+    <string name="yeni_isim">Yeni İsim</string>
+    <string name="yeni_soy_isim">Yeni Soy İsim</string>
+    <string name="erkek">Erkek</string>
+    <string name="kadın">Kadın</string>
     <string name="sifre">Şifre</string>
     <string name="tekrar_sifre">Şifrenizi Tekrar Giriniz</string>
     <string name="kvkk">KVKK kurallarını okudum, kabul ediyorum</string>
     <string name="sifre_unutma">Şifremi Unuttum</string>
     <string name="giris_yap">GİRİŞ</string>
     <string name="kayit_ol">KAYIT OLUN</string>
+    <string name="update_button">Bilgilerimi Güncelle</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_profile">ProfileActivity</string>
