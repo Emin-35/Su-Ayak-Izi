@@ -21,6 +21,9 @@
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.SemesterProject" />
+        <activity android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/Theme.SemesterProject" />
         <activity
             android:name=".TranslationActivity"
             android:exported="false" />
