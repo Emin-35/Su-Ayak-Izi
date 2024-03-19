@@ -98,12 +98,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
+    // Check if the given name or lastname is valid
+    public boolean isNameValid(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
+
     // Method to insert email and password into the login table
-    public void insertLoginData(String email, String password, Context context, InsertCallback callback) {
+    public void insertLoginData(String email, String name, String lastName, String password, Context context, InsertCallback callback) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_PASSWORD, password);
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_LASTNAME, lastName);
 
         try {
             // Insert the values into the database

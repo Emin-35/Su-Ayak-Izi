@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity implements DBHelper.InsertCallback{
 
-    private EditText emailTextInputRegister,passwordTextInputRegister,passwordTextInputRegister2;
+    private EditText emailTextInputRegister,nameTextInputRegister,lastnameTextInputRegister,
+            passwordTextInputRegister,passwordTextInputRegister2;
     private Button registerButtonRegister;
     private CheckBox kvkkCheckBox;
     private DBHelper dbHelper;
@@ -31,9 +32,15 @@ public class RegisterActivity extends AppCompatActivity implements DBHelper.Inse
         setContentView(R.layout.register_tab);
 
         emailTextInputRegister = findViewById(R.id.emailTextInputRegister);
+
+        nameTextInputRegister = findViewById(R.id.nameTextInputRegister);
+        lastnameTextInputRegister = findViewById(R.id.lastnameTextInputRegister);
+
         passwordTextInputRegister = findViewById(R.id.passwordTextInputRegister);
         passwordTextInputRegister2 = findViewById(R.id.passwordTextInputRegister2);
+
         kvkkCheckBox = findViewById(R.id.kvkkCheckBox);
+
         registerButtonRegister = findViewById(R.id.registerButtonRegister);
 
         dbHelper = new DBHelper(this);
@@ -42,28 +49,40 @@ public class RegisterActivity extends AppCompatActivity implements DBHelper.Inse
             @Override
             public void onClick(View v) {
                 String email = emailTextInputRegister.getText().toString().trim();
+
+                String name = nameTextInputRegister.getText().toString().trim();
+                String lastName = lastnameTextInputRegister.getText().toString().trim();
+
                 String password = passwordTextInputRegister.getText().toString().trim();
                 String password2 = passwordTextInputRegister2.getText().toString().trim();
 
                 //Check if the user accepted KVKK
-                if(!kvkkCheckBox.isChecked())
+                if(!kvkkCheckBox.isChecked()) {
                     Toast.makeText(RegisterActivity.this, "Lütfen KVKK kurallarını kabul ediniz.", Toast.LENGTH_SHORT).show();
+                    return; //If not check do not continue
+                }
 
                 //Check if the text areas are filled
-                if(!email.isEmpty() && !password.isEmpty() && !password2.isEmpty()) {
+                if(email.isEmpty() || name.isEmpty() || lastName.isEmpty() || password.isEmpty() || password2.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Lütfen bilgilerinizi tam giriniz.", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     //Check if the both passwords are same
-                    if (!password.equals(password2))
+                    if (!password.equals(password2)) {
                         Toast.makeText(RegisterActivity.this, "Şifreler uyuşmuyor. Lütfen tekrar giriniz.", Toast.LENGTH_SHORT).show();
+                    }
                     //Check if the given email is valid
-                    else if (!dbHelper.isEmailValid(email))
+                    else if (!dbHelper.isEmailValid(email)) {
                         Toast.makeText(RegisterActivity.this, "Lütfen geçerli bir e-mail giriniz.", Toast.LENGTH_SHORT).show();
-                    //Insert the user into the database
+                    }
+                    else if(!dbHelper.isNameValid(name) || !dbHelper.isNameValid(lastName)) {
+                        Toast.makeText(RegisterActivity.this, "Lütfen geçerli bir isim ve soyisim giriniz.", Toast.LENGTH_SHORT).show();
+                    }
                     else {
-                        dbHelper.insertLoginData(email,password,RegisterActivity.this,RegisterActivity.this);
+                        Toast.makeText(RegisterActivity.this, "Kayıt Başarılı.", Toast.LENGTH_SHORT).show();
+                        dbHelper.insertLoginData(email ,name ,lastName, password,RegisterActivity.this,RegisterActivity.this);
                     }
                 }
-                else
-                    Toast.makeText(RegisterActivity.this, "Lütfen bilgilerinizi tam giriniz.", Toast.LENGTH_SHORT).show();
             }
         });
     }

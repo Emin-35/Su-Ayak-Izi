@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Semester Project</string>
+    <string name="logo">Logo</string>
     <string name="su_ayak_izi">Su Ayak İzi</string>
     <string name="kullanici_girisi">Kullanıcı Girişi</string>
     <string name="uye_ol">Kayıt Olun</string>
     <string name="eposta_adresi">E-posta Adresi</string>
+    <string name="isim">İsim</string>
+    <string name="soy_isim">Soy İsim</string>
     <string name="sifre">Şifre</string>
     <string name="tekrar_sifre">Şifrenizi Tekrar Giriniz</string>
     <string name="kvkk">KVKK kurallarını okudum, kabul ediyorum</string>
