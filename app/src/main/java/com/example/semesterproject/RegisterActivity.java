@@ -79,7 +79,6 @@ public class RegisterActivity extends AppCompatActivity implements DBHelper.Inse
                         Toast.makeText(RegisterActivity.this, "Lütfen geçerli bir isim ve soyisim giriniz.", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Toast.makeText(RegisterActivity.this, "Kayıt Başarılı.", Toast.LENGTH_SHORT).show();
                         dbHelper.insertLoginData(email ,name ,lastName, password,RegisterActivity.this,RegisterActivity.this);
                     }
                 }
