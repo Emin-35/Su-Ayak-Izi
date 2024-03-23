@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,9 @@
     android:background="#0E5A97"
     >
 
+    <!-- TextView at the top -->
     <TextView
+        android:id="@+id/textViewTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/frame_background"
@@ -18,19 +20,29 @@
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         />
 
+    <!-- ScrollView containing the GridLayout -->
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/textViewTop"
+    android:layout_above="@+id/bottomNavigationView"
+    android:layout_centerHorizontal="true"
+    >
+    <!-- GridLayout -->
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="3"
         android:columnCount="2"
-        android:layout_gravity="center"
+        android:padding="10dp"
+        android:clipToPadding="false"
         >
-
         <!-- Image 1 -->
         <ImageView
             android:layout_width="0dp"
@@ -80,5 +92,15 @@
             android:src="@drawable/statistics"
             android:layout_margin="5dp"/>
     </GridLayout>
+</ScrollView>
 
-</LinearLayout>
+    <!-- BottomNavigationView at the bottom -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"/>
+
+</RelativeLayout>

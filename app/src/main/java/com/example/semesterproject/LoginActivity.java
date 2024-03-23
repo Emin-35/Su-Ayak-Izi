@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -43,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                     //If login successful, log-in the user to system
                     if(status) {
                         Toast.makeText(LoginActivity.this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(LoginActivity.this, TranslationActivity.class);
                         startActivity(intent);
                     }
